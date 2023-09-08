@@ -1,18 +1,20 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import "./todolist.scss";
+import { useAppDispatch } from "../store/store.config";
+import { selectTodolist } from "../store/todolist.selector";
+import { todoAddedAction } from "../store/todolist.actions";
 
 
 function Todolist() {
-  // const dispatch = useAppDispatch();
-  // const list = useSelector(selectTodolist);
+  const dispatch = useAppDispatch();
+  const list = useSelector(selectTodolist);
 
-  const [list, setList] = useState([{id: 1, text: "Tomate"}]);
   const [input, setInput] = useState("");
 
   const onClickValidate = async () => {
     if (input) {
-      //dispatch(todoAddedAction(input));
+      dispatch(todoAddedAction(input));
       setInput("");
     }
   };
