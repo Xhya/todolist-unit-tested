@@ -5,9 +5,9 @@ export type TodoItem = {
   completed: boolean;
   id: number;
 };
-export type Todo ={ [id: string]: TodoItem };
+export type Todo = TodoItem[];
 
-const initialState: Todo ={ 0: { text: 'Use Redux', completed: false, id: 0 } };
+const initialState: Todo = [ { text: 'Use Redux', completed: false, id: 0 } ];
 
 export const TodolistSlice = createSlice({
   name: "Todolist",
@@ -16,7 +16,7 @@ export const TodolistSlice = createSlice({
     setTodolist(_, action) {
       return action.payload;
     },
-    todoAdded(state, action: PayloadAction<string>) {
+    todoAdded(state: Todo, action: PayloadAction<string>) {
       if (Array.isArray(state)) {
         const id = state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1;
         state.push({
@@ -27,6 +27,7 @@ export const TodolistSlice = createSlice({
       } else {
         // @ts-ignore
         const id = state[0].id + 1;
+        // @ts-ignore
         state[id] = {
           id: id,
           completed: false,
