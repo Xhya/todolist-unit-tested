@@ -14,7 +14,7 @@ export const TodolistSlice = createSlice({
   initialState: initialState,
   reducers: {
     setTodolist(_, action) {
-      return action.payload;
+      return action.payload.todolist;
     },
     todoAdded(state: Todo, action: PayloadAction<string>) {
       if (Array.isArray(state)) {

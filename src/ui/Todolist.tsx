@@ -5,24 +5,20 @@ import { useAppDispatch } from "../store/store.config";
 import { selectTodolist } from "../store/todolist.selector";
 import { todoAddedAction } from "../store/todolist.actions";
 import { TodoItem } from "../store/todolist.reducer";
-import { addItem } from "../store/todolist.dispatcher";
+import { addItem, refreshTodolist } from "../store/todolist.dispatcher";
 
 function Todolist() {
   const dispatch = useAppDispatch();
   const list = useSelector(selectTodolist);
   const [input, setInput] = useState("");
 
-  // async function fetchData() {
-  //   const data = await (
-  //     await fetch(
-  //       "https://run.mocky.io/v3/b3bcb9d2-d8e9-43c5-bfb7-0062c85be6f9"
-  //     )
-  //   ).json();
-  // }
+  useEffect(() => {
+    async function fetchData() {
+      dispatch(refreshTodolist());
+    }
 
-  // useEffect(() => {
-  //   // fetchData();
-  // }, [fetchData]);
+    fetchData();
+  }, [dispatch]);
 
   const onClickValidate = async () => {
     if (input) {
