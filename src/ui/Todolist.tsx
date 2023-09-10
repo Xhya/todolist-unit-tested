@@ -4,7 +4,7 @@ import "./todolist.scss";
 import { useAppDispatch } from "../store/store.config";
 import { selectTodolist } from "../store/todolist.selector";
 import { todoAddedAction } from "../store/todolist.actions";
-
+import { TodoItem } from "../store/todolist.reducer";
 
 function Todolist() {
   const dispatch = useAppDispatch();
@@ -19,6 +19,22 @@ function Todolist() {
     }
   };
 
+  const Todo = () => {
+    if (Array.isArray(list)) {
+      return list.map((item) => (
+        <div className="item" key={item.id}>
+          <div>{item.text}</div>
+        </div>
+      ));
+    } else {
+      return Object.values(list).map((item: TodoItem) => (
+        <div className="item" key={item.id}>
+          <div>{item.text}</div>
+        </div>
+      ));
+    }
+  };
+
   return (
     <div className="container">
       <div className="todolist">
@@ -29,13 +45,7 @@ function Todolist() {
           />
           <button onClick={onClickValidate}>Ajouter</button>
         </div>
-        <div className="list">
-          {list.map((item) => (
-            <div className="item" key={item.id}>
-              <div>{item.text}</div>
-            </div>
-          ))}
-        </div>
+        <div className="list">{Todo()}</div>
       </div>
     </div>
   );

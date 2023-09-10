@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { accessList } from "./todolist.selector";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type TodoItem = {
   text: string;
@@ -17,18 +16,23 @@ export const TodolistSlice = createSlice({
     setTodolist(_, action) {
       return action.payload;
     },
-    todoAdded(state, action) {
-      const id =
-        accessList(state).reduce(
-          (maxId, todo) => Math.max(todo.id, maxId),
-          -1
-        ) + 1;
-
-      state[id] = ({
-        id: id,
-        completed: false,
-        text: action.payload,
-      });
+    todoAdded(state, action: PayloadAction<string>) {
+      if (Array.isArray(state)) {
+        const id = state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1;
+        state.push({
+          id: id,
+          completed: false,
+          text: action.payload,
+        });
+      } else {
+        // @ts-ignore
+        const id = state[0].id + 1;
+        state[id] = {
+          id: id,
+          completed: false,
+          text: action.payload,
+        };
+      }
     },
   },
 });
