@@ -1,20 +1,32 @@
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./todolist.scss";
 import { useAppDispatch } from "../store/store.config";
 import { selectTodolist } from "../store/todolist.selector";
 import { todoAddedAction } from "../store/todolist.actions";
 import { TodoItem } from "../store/todolist.reducer";
+import { addItem } from "../store/todolist.dispatcher";
 
 function Todolist() {
   const dispatch = useAppDispatch();
   const list = useSelector(selectTodolist);
-
   const [input, setInput] = useState("");
+
+  // async function fetchData() {
+  //   const data = await (
+  //     await fetch(
+  //       "https://run.mocky.io/v3/b3bcb9d2-d8e9-43c5-bfb7-0062c85be6f9"
+  //     )
+  //   ).json();
+  // }
+
+  // useEffect(() => {
+  //   // fetchData();
+  // }, [fetchData]);
 
   const onClickValidate = async () => {
     if (input) {
-      dispatch(todoAddedAction(input));
+      dispatch(addItem(input));
       setInput("");
     }
   };
