@@ -5,7 +5,7 @@ import { useAppDispatch } from "../store/store.config";
 import { selectTodolist } from "../store/todolist.selector";
 import { todoAddedAction } from "../store/todolist.actions";
 import { TodoItem } from "../store/todolist.reducer";
-import { addItem, refreshTodolist } from "../store/todolist.dispatcher";
+import { refreshTodolist } from "../store/todolist.dispatcher";
 
 function Todolist() {
   const dispatch = useAppDispatch();
@@ -17,29 +17,13 @@ function Todolist() {
       dispatch(refreshTodolist());
     }
 
-    fetchData();
+    // fetchData();
   }, [dispatch]);
 
   const onClickValidate = async () => {
     if (input) {
-      dispatch(addItem(input));
+      dispatch(todoAddedAction(input));
       setInput("");
-    }
-  };
-
-  const Todo = () => {
-    if (Array.isArray(list)) {
-      return list.map((item) => (
-        <div className="item" key={item.id}>
-          <div>{item.text}</div>
-        </div>
-      ));
-    } else {
-      return Object.values(list).map((item: TodoItem) => (
-        <div className="item" key={item.id}>
-          <div>{item.text}</div>
-        </div>
-      ));
     }
   };
 
@@ -53,10 +37,26 @@ function Todolist() {
           />
           <button onClick={onClickValidate}>Ajouter</button>
         </div>
-        <div className="list">{Todo()}</div>
+        <div className="list">{Todo(list)}</div>
       </div>
     </div>
   );
 }
 
 export default Todolist;
+
+const Todo = (list) => {
+  if (Array.isArray(list)) {
+    return list.map((item) => (
+      <div className="item" key={item.id}>
+        <div>{item.text}</div>
+      </div>
+    ));
+  } else {
+    return Object.values(list).map((item: TodoItem) => (
+      <div className="item" key={item.id}>
+        <div>{item.text}</div>
+      </div>
+    ));
+  }
+};

@@ -14,6 +14,6 @@ export const refreshTodolist =
 export const addItem =
   (itemValue: string): ThunkResult<Promise<void>> =>
   async (dispatch: any, getState: any, { todolistWebservice }) => {
-    await todolistWebservice.addItem(itemValue);
+    // await todolistWebservice.addItem(itemValue);
     dispatch(todoAdded(itemValue));
   };
