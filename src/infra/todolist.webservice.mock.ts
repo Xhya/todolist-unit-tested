@@ -11,21 +11,9 @@ export class TodolistWebserviceMock implements TodolistWebserviceInterface {
     },
   ];
 
-  getList(): Promise<Todo> {
+  getList(): Promise<any> {
     return new Promise((resolve) => {
       setTimeout(() => resolve(this._list), 500);
     });
   }
-
-  // addItem(itemValue: string): Promise<void> {
-  //   return new Promise((resolve) => {
-  //     this._id += 1
-  //     this._list.push({
-  //       id: this._id,
-  //       text: itemValue,
-  //       completed: false,
-  //     });
-  //     setTimeout(() => resolve(), 500);
-  //   });
-  // }
 }
