@@ -3,6 +3,7 @@ import Todolist from "./Todolist";
 import { Provider } from "react-redux";
 import { store } from "../store/store.config";
 import { TodolistWebserviceMock } from "../infra/todolist.webservice.mock";
+import { TodoItem } from "../store/todolist.reducer";
 
 const webservice = new TodolistWebserviceMock();
 
