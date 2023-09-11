@@ -1,7 +1,9 @@
+import { TodolistWebservice } from "./infra/todolist.webservice";
 import Todolist from "./ui/Todolist";
 
 function App() {
-  return <Todolist />;
+  const webservice = new TodolistWebservice()
+  return <Todolist/>;
 }
 
 export default App;

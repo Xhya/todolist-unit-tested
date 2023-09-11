@@ -1,4 +1,3 @@
-import { Todo } from "../store/todolist.reducer";
 import { TodolistWebserviceInterface } from "./todolist.webservice.interface";
 
 export class TodolistWebserviceMock implements TodolistWebserviceInterface {
