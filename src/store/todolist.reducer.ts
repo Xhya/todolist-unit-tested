@@ -5,9 +5,9 @@ export type TodoItem = {
   completed: boolean;
   id: number;
 };
-export type Todo ={ [id: string]: TodoItem };
+export type Todo = TodoItem[];
 
-const initialState: Todo ={ 0: { text: 'Use Redux', completed: false, id: 0 } };
+const initialState: Todo = [ { text: 'Use Redux', completed: false, id: 0 } ];
 
 export const TodolistSlice = createSlice({
   name: "Todolist",
