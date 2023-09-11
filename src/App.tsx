@@ -1,13 +1,7 @@
 import Todolist from "./ui/Todolist";
-import { Provider } from "react-redux";
-import { store } from "./store/store.config";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Todolist />
-    </Provider>
-  );
+  return <Todolist />;
 }
 
 export default App;

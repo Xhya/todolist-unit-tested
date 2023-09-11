@@ -3,26 +3,29 @@ import { useEffect, useState } from "react";
 import "./todolist.scss";
 import { useAppDispatch } from "../store/store.config";
 import { selectTodolist } from "../store/todolist.selector";
-import { todoAddedAction } from "../store/todolist.actions";
 import { TodoItem } from "../store/todolist.reducer";
-import { refreshTodolist } from "../store/todolist.dispatcher";
+import { addItem, refreshTodolist } from "../store/todolist.dispatcher";
+import { TodolistWebserviceInterface } from "../infra/todolist.webservice.interface";
+import { setTodolistAction } from "../store/todolist.actions";
 
 function Todolist() {
   const dispatch = useAppDispatch();
   const list = useSelector(selectTodolist);
   const [input, setInput] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      dispatch(refreshTodolist());
-    }
+  async function fetchData() {
+    const response = await fetch("./data.json");
+    const json = await response.json();
+    dispatch(setTodolistAction(json));
+  }
 
-    // fetchData();
+  useEffect(() => {
+    //fetchData();
   }, [dispatch]);
 
   const onClickValidate = async () => {
     if (input) {
-      dispatch(todoAddedAction(input));
+      dispatch(addItem(input));
       setInput("");
     }
   };
