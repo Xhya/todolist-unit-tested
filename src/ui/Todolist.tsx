@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import "./todolist.scss";
@@ -20,8 +21,8 @@ function Todolist() {
   }
 
   useEffect(() => {
-    //fetchData();
-  }, [dispatch]);
+    // fetchData();
+  }, [dispatch, fetchData]);
 
   const onClickValidate = async () => {
     if (input) {
