@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./todolist.scss";
 import { useAppDispatch } from "../store/store.config";
 import { selectTodolist } from "../store/todolist.selector";
-import { TodoItem } from "../store/todolist.reducer";
+import { TodoItem, todoAdded } from "../store/todolist.reducer";
 import { addItem, refreshTodolist } from "../store/todolist.dispatcher";
 import { TodolistWebserviceInterface } from "../infra/todolist.webservice.interface";
 import { setTodolistAction } from "../store/todolist.actions";
@@ -22,7 +22,7 @@ function Todolist() {
 
   useEffect(() => {
     // fetchData();
-  }, [dispatch, fetchData]);
+  }, []);
 
   const onClickValidate = async () => {
     if (input) {

@@ -104,4 +104,18 @@
 		  "});",
 		]
 	  }
+
+	  "list object": {
+		"scope": "typescript",
+		"prefix": "list object",
+		"body": [
+		  "private _list = {",
+		  "0: {",
+		  "id: 0,",
+		  "text: 'Salade',",
+		  "completed: false,",
+		  "},",
+		  "};"
+		]
+	  },
 }
