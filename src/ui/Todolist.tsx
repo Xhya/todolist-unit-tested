@@ -8,10 +8,11 @@ import { TodoItem, todoAdded } from "../store/todolist.reducer";
 import { addItem, refreshTodolist } from "../store/todolist.dispatcher";
 import { TodolistWebserviceInterface } from "../infra/todolist.webservice.interface";
 import { setTodolistAction } from "../store/todolist.actions";
+import TodoViewModel from "./todolist.viewmodel";
 
 function Todolist() {
   const dispatch = useAppDispatch();
-  const list = useSelector(selectTodolist);
+  const list = useSelector(TodoViewModel.list);
   const [input, setInput] = useState("");
 
   async function fetchData() {

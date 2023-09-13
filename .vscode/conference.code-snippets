@@ -69,7 +69,7 @@
 		"scope": "typescript",
 		"prefix": "testing final",
 		"body": [
-		  "import reducer, { todoAdded, Todo } from './todolist.reducer';",
+		  "import reducer, { todoAdded, Todo, TodoItem } from './todolist.reducer';",
 		  "import { TodolistWebserviceInterface } from '../infra/todolist.webservice.interface';",
 		  "import { TodolistWebserviceMock } from '../infra/todolist.webservice.mock';",
 		  "import TodoViewModel from '../ui/todolist.viewmodel';",
@@ -100,7 +100,7 @@
 		  "   expect(getItemValueList()).toEqual(['Salade', 'Tomate', 'Oignon']);",
 		  " });",
 		  "",
-		  " const getItemValueList = () => Object.values(TodoViewModel.list(store.getState())).map((item) => item.text);",
+		  " const getItemValueList = () => Object.values(TodoViewModel.list(store.getState())).map((item: TodoItem) => item.text);",
 		  "});",
 		]
 	  }
