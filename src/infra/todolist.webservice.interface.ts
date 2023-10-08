@@ -1,4 +1,5 @@
+import { Todo } from "../store/todolist.reducer";
 
 export interface TodolistWebserviceInterface {
-  getList: () => Promise<any>;
+  getList: () => Promise<Todo>;
 }
