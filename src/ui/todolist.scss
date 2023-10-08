@@ -4,17 +4,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #D8D9CD;
   }
   
   .todolist {
-    background-color: white;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 500px;
     width: 500px;
-    border: solid 1px grey;
+    border: solid 2px grey;
     box-sizing: content-box;
   }
   
@@ -29,10 +29,11 @@
     input {
       width: 70%;
       border: none;
-      color: white;
+      color: grey;
       font-size: 24px;
       padding-left: 10px;
-      background-color: #de2121;
+      background-color: #D8D9CD;
+      border-bottom: solid 2px grey;
     }
   
     input:focus {
@@ -40,11 +41,12 @@
     }
   
     button {
+      background-color: #708829;
       width: 150px;
-      background-color: #de2121;
-      color: white;
       border: none;
-      border-left: solid 2px white;
+      border-left: solid 2px grey;
+      border-bottom: solid 2px grey;
+      color: white;
       font-size: 32px;
       cursor: pointer;
     }
@@ -63,7 +65,7 @@
     display: flex;
     justify-content: space-between;
     padding: 15px 10px;
-    color: grey;
+    color: #708829;
     font-size: 40px;
   
     div {
